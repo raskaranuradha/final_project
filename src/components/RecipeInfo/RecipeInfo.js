@@ -1,20 +1,28 @@
-import { useState } from "react"
-import { useParams } from "react-router-dom"
+import { useState, useEffect } from "react"
+import { useParams } from "react-router"
+import { useNavigate } from "react-router-dom"
+
 
 
 let vId=""
 const RecipeInfo = () => {
    
+    const navigate = useNavigate();
+	const goBack = () => {
+		navigate(-1);
+	}
     const[item,setItem]=useState()
-    const {MealID} = useParams()
-    if(MealID!=="")
+    const {idMeal} = useParams()
+    console.log("MealID::"+idMeal)
+    useEffect(() => {
+    if(idMeal!=="")
     {
-        fetch(`https:/www.themealdb.com/api/json/v1/1/lookup.php?i=${MealID}`)
+        fetch(`https:/www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`)
         .then(resp=>resp.json())
         .then(data=>{
             setItem(data.meals[0])
         })
-    }
+    }},[idMeal])
 
     if(item){
         const url=item.strYoutube
@@ -27,7 +35,9 @@ const RecipeInfo = () => {
         {
             (!item) ? "" : (
                 <>
+                
                 <div className="content">
+                <button  onClick={goBack}>Back</button>
                     <img src={item.strMealThumb} alt="" />
                     <div className="inner-content">
                         <h1>{item.strMeal}</h1>
