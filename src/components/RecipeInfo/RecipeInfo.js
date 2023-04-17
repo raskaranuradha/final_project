@@ -2,11 +2,8 @@ import { useState, useEffect } from "react"
 import { useParams } from "react-router"
 import { useNavigate } from "react-router-dom"
 
-
-
 let vId=""
 const RecipeInfo = () => {
-   
     const navigate = useNavigate();
 	const goBack = () => {
 		navigate(-1);
@@ -19,8 +16,7 @@ const RecipeInfo = () => {
     {
         fetch(`https:/www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`)
         .then(resp=>resp.json())
-        .then(data=>{
-            setItem(data.meals[0])
+        .then(data=>{setItem(data.meals[0])
         })
     }},[idMeal])
 
@@ -35,9 +31,8 @@ const RecipeInfo = () => {
         {
             (!item) ? "" : (
                 <>
-                
                 <div className="content">
-                <button  onClick={goBack}>Back</button>
+                    <button  onClick={goBack}>Back</button>
                     <img src={item.strMealThumb} alt="" />
                     <div className="inner-content">
                         <h1>{item.strMeal}</h1>
@@ -47,7 +42,7 @@ const RecipeInfo = () => {
                 </div>
                 <div className="recipe-details">
                     <div className="ingredients">
-                        <h3>Ingredients  </h3><br />
+                        <h2>Ingredients  </h2><br />
                         <h4>{item.strIngredient1} : {item.strMeasure1}</h4>
                         <h4>{item.strIngredient2} : {item.strMeasure2}</h4>
                         <h4>{item.strIngredient3} : {item.strMeasure3}</h4>
@@ -63,19 +58,16 @@ const RecipeInfo = () => {
                         <h2>Instructions : </h2><br />
                         <h4>{item.strInstructions}</h4>
                     </div><br />
-                    <div className="video">
-                        <iframe src={`https://www.youtube.com/embed/${vId}`} title="recipe">
-                        </iframe>
-                    </div>
                 </div>
-
+                <div className="video">
+                    <iframe src={`https://www.youtube.com/embed/${vId}`} title="recipe">
+                    </iframe>
+                </div>
                 </>
             )
         }
-            
         </>
     )
-
 }
 
 export default RecipeInfo

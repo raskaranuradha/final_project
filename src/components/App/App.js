@@ -1,10 +1,9 @@
-//import Meal from "./components/Meal";
-import Home from "./components/Home";
+import Home from "../Home/Home";
 import "./App.css"
 import { Routes,Route, BrowserRouter,NavLink } from "react-router-dom";
-import RecipeInfo from "./components/RecipeInfo/RecipeInfo";
-import Meal from "./components/Meal/Meal";
-import About from "./components/About";
+import RecipeInfo from "../RecipeInfo/RecipeInfo";
+import Meal from "../Meal/Meal";
+import About from "../About/About";
 
 function App() {
   return (
@@ -12,7 +11,7 @@ function App() {
       <nav className="navbar">
         <NavLink to="/">Home</NavLink>
         {'|'}
-        <NavLink to="/Meal">Find Meal</NavLink>
+        <NavLink to="/Meal">Find a Meal</NavLink>
         {'|'}
         <NavLink to="/about">About</NavLink>      
       </nav>
@@ -23,7 +22,6 @@ function App() {
         <Route path="/meal/:idMeal" element={<RecipeInfo />} />
         <Route path="/about" element={<About />} />
       </Routes>
-      
     </BrowserRouter>
   );
 }

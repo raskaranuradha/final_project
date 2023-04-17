@@ -3,7 +3,7 @@ import RecipeIndex from "../RecipeIndex/RecipeIndex"
 import { useEffect, useState } from "react"
 
 const Meal = () => {
-    const [url,setUrl]=useState("https:/www.themealdb.com/api/json/v1/1/search.php?f=a")
+    const [url,setUrl]=useState("https:/www.themealdb.com/api/json/v1/1/filter.php?c=starter")
     const [item,setItem]=useState()
     const [show,setShow]=useState(false)
     const [search, setSearch]=useState("")
@@ -17,7 +17,7 @@ const Meal = () => {
         })
     },[url])
 
-    const setIndex = (categories) => {
+    const setCategory = (categories) => {
         setUrl(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${categories}`)
     }
 
@@ -38,7 +38,7 @@ const Meal = () => {
                 </div> 
                 <div className="categoryContainer">
                 {
-                    <RecipeIndex categoryList={(categories) => setIndex(categories)} /> 
+                    <RecipeIndex categoryList={(categories) => setCategory(categories)} /> 
                 }
                 </div>
                 <div className="container">
