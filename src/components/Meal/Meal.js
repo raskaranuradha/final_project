@@ -1,13 +1,13 @@
-import MealItem from "./MealItem"
-import RecipeIndex from "./RecipeIndex"
+import MealItem from "../MealItem/MealItem"
+import RecipeIndex from "../RecipeIndex/RecipeIndex"
 import { useEffect, useState } from "react"
 
 const Meal = () => {
-    const [url,setUrl]=useState("https:/www.themealdb.com/api/json/v1/1/search.php?f=a")
+    const [url,setUrl]=useState("https:/www.themealdb.com/api/json/v1/1/filter.php?c=side")
     const [item,setItem]=useState()
     const [show,setShow]=useState(false)
     const [search, setSearch]=useState("")
-
+    
     useEffect(()=>{
         fetch(url)
         .then(res=>res.json())
@@ -17,8 +17,8 @@ const Meal = () => {
         })
     },[url])
 
-    const setIndex = (alpha) => {
-        setUrl(`https:/www.themealdb.com/api/json/v1/1/search.php?f=${alpha}`)
+    const setCategory = (categories) => {
+        setUrl(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${categories}`)
     }
 
     const searchRecipe = (event) => {
@@ -31,23 +31,22 @@ const Meal = () => {
         <>
             <div className="main">
                 <div className="heading">
-                    <h1>Search Your Food Recipe</h1>
-                    
+                    <h1>Search Your Food Recipe</h1>  
                 </div>
                 <div className="searchBox">
-                    <input type="text" className="search-bar" onChange={e=>setSearch(e.target.value)} onKeyDown={searchRecipe}/>
-                    
+                    <input type="text" className="search-bar" placeholder="Search..." onChange={e=>setSearch(e.target.value)} onKeyDown={searchRecipe}/>
+                </div> 
+                <div className="categoryContainer">
+                {
+                    <RecipeIndex categoryList={(categories) => setCategory(categories)} /> 
+                }
                 </div>
                 <div className="container">
                     {
                         show ? <MealItem data={item}/> :"Item Does Not Found"
-
                     }
-   
                 </div>
-                <div className="indexContainer">
-                    <RecipeIndex alphaIndex={(alpha) => setIndex(alpha)} />
-                </div>
+               
             </div>
         </>
     )
