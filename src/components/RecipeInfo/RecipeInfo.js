@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { useParams } from "react-router"
 import { useNavigate } from "react-router-dom"
+import './RecipeInfo.css'
 
 let vId=""
 const RecipeInfo = () => {

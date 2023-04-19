@@ -1,0 +1,13 @@
+.home {
+    width: 80%;
+    margin: 25px 50px;
+    display: grid;
+    text-align: center;
+  }
+  
+  .home img {
+    width: 100%;
+    border-radius: 1rem 1rem 0 0;
+    height: 75%;
+  }
+  

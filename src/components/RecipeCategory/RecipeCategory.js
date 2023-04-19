@@ -1,6 +1,6 @@
 
 
-const RecipeIndex = ({categoryList}) => {
+const RecipeCategory = ({categoryList}) => {
     const categories = ["Beef","Chicken","Dessert","Lamb","Miscellaneous","Pasta","Pork","Seafood","Side","Starter","Vegan","Vegetarian","Breakfast","Goat"]
     var num=0
     return(
@@ -18,4 +18,4 @@ const RecipeIndex = ({categoryList}) => {
     )
 }
 
-export default RecipeIndex
+export default RecipeCategory

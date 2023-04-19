@@ -1,6 +1,8 @@
 import MealItem from "../MealItem/MealItem"
-import RecipeIndex from "../RecipeIndex/RecipeIndex"
+import RecipeCategory from "../RecipeCategory/RecipeCategory"
 import { useEffect, useState } from "react"
+import './Meal.css'
+
 
 const Meal = () => {
     const [url,setUrl]=useState("https:/www.themealdb.com/api/json/v1/1/filter.php?c=side")
@@ -38,7 +40,7 @@ const Meal = () => {
                 </div> 
                 <div className="categoryContainer">
                 {
-                    <RecipeIndex categoryList={(categories) => setCategory(categories)} /> 
+                    <RecipeCategory categoryList={(categories) => setCategory(categories)} /> 
                 }
                 </div>
                 <div className="container">
